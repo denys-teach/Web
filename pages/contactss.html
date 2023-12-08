@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Slider</title>
+  <link rel="stylesheet" href="/assets/css/styles2.css">
+
+  <header class="header">
+
+    <nav class="nav-bar">
+
+      <ul class="nav-bar__list">
+        <li>
+          <div class="logo">
+            <a href="/index.html">
+              Travel
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="/index.html" class="nav-bar__list-item">
+            Головна
+          </a>
+        </li>
+        <li>
+          <a href="/pages/about.html" class="nav-bar__list-item">
+            Про нас
+          </a>
+        </li>
+        <li>
+          <a href="/pages/contact.html" class="nav-bar__list-item">
+            Контакти
+          </a>
+        </li>
+        <li>
+          <a href="/pages/personal.html" class="nav-bar__list-item">
+            Особистий кабінет
+          </a>
+        </li>
+        <li>
+          <a href="/pages/book_now.html" class="item-for-price">
+            BOOK NOW
+          </a>
+        </li>
+      </ul>
+
+      <style>
+        html {
+          min-height: 100%;
+        }
+
+        body {
+          min-height: 100%;
+          margin: 0;
+          padding: 0;
+          font: 15px Tahoma;
+          color: #9c1111;
+        }
+
+        #top {
+          width: 100%;
+          background: #222;
+          text-align: center;
+          height: 35px;
+          line-height: 35px;
+        }
+
+        #top a {
+          color: #00FF00;
+          text-decoration: none;
+        }
+
+        .logo {
+          width: 200px;
+          font: 22px/125% Tahoma;
+          float: left;
+          line-height: 35px;
+        }
+
+        .logo span {
+          font: 12px/125% Tahoma;
+        }
+
+        .sl_ctr {
+          position: relative;
+          width: 800px;
+          height: 600px;
+          overflow: hidden;
+        }
+
+        .sldr {
+          position: relative;
+          width: 10000px;
+          height: 300px;
+        }
+
+        .sldr img {
+          float: left;
+        }
+
+        .prv_b,
+        .nxt_b {
+          position: absolute;
+          top: 135px;
+          display: block;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+        }
+
+        .prv_b:hover,
+        .nxt_b:hover {
+          opacity: .6;
+        }
+
+        .prv_b {
+          left: 10px;
+          background: white;
+          border-radius: 50%;
+        }
+
+        .nxt_b {
+          right: 10px;
+          background: white;
+          border-radius: 50%;
+        }
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script>
+        $(function () {
+          var sldr = $('.sldr'),
+            sldrContent = sldr.html(),
+            slideWidth = $('.sl_ctr').outerWidth(),
+            slideCount = $('.sldr img').length,
+            prv_b = $('.prv_b'),
+            nxt_b = $('.nxt_b'),
+            sldrInterval = 3300,
+            animateTime = 1000,
+            course = 1,
+            margin = -slideWidth;
+
+          // Update slide count
+          var updatedSlideCount = slideCount - 2; // Exclude the cloned slides
+          var interval;
+
+          $('.sldr img:last').clone().prependTo('.sldr');
+          $('.sldr img').eq(1).clone().appendTo('.sldr');
+          $('.sldr').css('margin-left', -slideWidth);
+
+          function nxt_bSlide() {
+            interval = window.setInterval(animate, sldrInterval);
+          }
+
+          function animate() {
+            if (margin == -updatedSlideCount * slideWidth - slideWidth) {
+              sldr.css({ 'marginLeft': -slideWidth });
+              margin = -slideWidth * 2;
+            } else if (margin == 0 && course == -1) {
+              sldr.css({ 'marginLeft': -slideWidth * updatedSlideCount });
+              margin = -slideWidth * updatedSlideCount + slideWidth;
+            } else {
+              margin = margin - slideWidth * (course);
+            }
+            sldr.animate({ 'marginLeft': margin }, animateTime);
+          }
+
+          function sldrStop() {
+            window.clearInterval(interval);
+          }
+
+          prv_b.click(function () {
+            if (sldr.is(':animated')) {
+              return false;
+            }
+            var course2 = course;
+            course = -1;
+            animate();
+            course = course2;
+          });
+
+          nxt_b.click(function () {
+            if (sldr.is(':animated')) {
+              return false;
+            }
+            var course2 = course;
+            course = 1;
+            animate();
+            course = course2;
+          });
+
+          sldr.add(nxt_b).add(prv_b).hover(function () {
+            sldrStop();
+          }, nxt_bSlide);
+
+          nxt_bSlide();
+        });
+      </script>
+</head>
+
+<body>
+  <br>
+  <br>
+  <br>
+  <center>
+    <div class="sl_ctr">
+      <div class="sldr" style="margin-left: -1732.59px;">
+        <img src="/images/photo_2023-10-21_16-06-15.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-02.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-12.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-15.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-02.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-15.jpg" alt="">
+        <img src="/images/photo_2023-10-21_16-06-02.jpg" alt="">
+      </div>
+      <div class="prv_b"></div>
+      <div class="nxt_b"></div>
+
+      <footer class="header">
+        <video width="350" height="250" controls>
+          <source src="/images/b.mp4" type="video/mp4">
+        </video>
+     
+  </center>
+    <ul>
+      <li>Підтримка: 24-годинна підтримка по телефону +3809624778..</li>
+      <li>Email : odnosum@gmail.com</li>
+      <li>Контакти в соціальних мережах</li>
+    </ul>
+    <div class="icons">
+      <img src="/icons/insta.png" alt="instagram" title="instagram">
+      <img src="/icons/twiter.png" alt="twitter" title="twitter">
+      <img src="/icons/facebook.png" alt="facebook" title="facebook">
+      <img src="/icons/pinterest.png" alt="pinterest" title="pinterest">
+      <img src="/icons/youtube.png" alt="youtube" title="youtube">
+    </div>
+  </footer>
+</body>
