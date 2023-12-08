@@ -22,7 +22,7 @@ a {
 
 /*logo*/
 
-.logo>a {
+.logo > a {
   font-family: "Smooch", cursive;
   padding: 8px 50px;
   margin-left: 10px;
@@ -30,14 +30,14 @@ a {
   transition: 0.5s;
 }
 
-.logo>a:hover {
+.logo > a:hover {
   color: aqua;
 }
 
 /*navigation*/
 
 .nav-bar {
-  background: url(/images/paris-za-5-dnei.jpg);
+  background: url(images/paris-za-5-dnei.jpg);
   height: 850px;
   background-size: cover;
   text-align: center;
@@ -53,7 +53,7 @@ a {
   margin-bottom: 20%;
 }
 
-.nav-bar__list>li {
+.nav-bar__list > li {
   display: flex;
   margin: 10px;
   align-items: center;
@@ -184,7 +184,7 @@ a {
   background: #ffc3c3;
 }
 
-.w15>img {
+.w15 > img {
   width: 100%;
 }
 
@@ -227,7 +227,7 @@ a {
   text-align: right;
 }
 
-.image-with-text-div>a {
+.image-with-text-div > a {
   text-align: center;
   width: 200px;
   color: black;
@@ -263,7 +263,7 @@ a {
   text-align: center;
 }
 
-.photos{
+.photos {
   margin-bottom: 150px;
 }
 
@@ -280,21 +280,18 @@ a {
   max-width: 100%;
 }
 
-.image-with-text>.centered-text>div {
+.image-with-text > .centered-text > div {
   border: 1px solid blue;
   background-color: rgb(98, 0, 255);
 }
 
-
 .nature {
-  background: url(/images/-priroda-.jpg);
+  background: url(images/-priroda-.jpg);
   height: 850px;
   background-size: cover;
   text-align: center;
   width: 100%;
 }
-
-
 
 .about-pac {
   margin: 30px auto 80px;
@@ -320,12 +317,11 @@ a {
   font-size: 24px;
 }
 
-
 .icons {
   display: flex;
   justify-content: space-around;
 }
 
-.icons>img {
+.icons > img {
   width: 30px;
 }
